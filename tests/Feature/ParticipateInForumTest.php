@@ -15,7 +15,8 @@ class ParticipateInForumTest extends TestCase {
 
         $this->expectException('Illuminate\Auth\AuthenticationException');
 
-        $this->post('/threads/1/replies', []);
+        $this->post('/threads/channel/1/replies', [])
+            ->assertRedirect('/login');
     }
 
     public function test_an_authenticated_user_may_participate_in_forum_threads() {
@@ -23,8 +24,8 @@ class ParticipateInForumTest extends TestCase {
         $this->be($user = factory('App\User')->create());
 
         $thread = factory('App\Thread')->create();
-
         $reply = factory('App\Reply')->make();
+
         $this->post($thread->path() . '/replies', $reply->toArray());
 
         $this->get($thread->path())
