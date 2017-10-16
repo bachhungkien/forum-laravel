@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Channel;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider {
@@ -18,6 +20,8 @@ class AppServiceProvider extends ServiceProvider {
         Schema::defaultStringLength(191);
 
         URL::forceScheme('https');
+
+        View::share('channels', Channel::all());
     }
 
     /**
