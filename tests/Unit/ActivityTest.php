@@ -38,8 +38,8 @@ class ActivityTest extends TestCase {
         $this->assertEquals(2, Activity::count());
     }
 
-    function it_fetches_a_feed_for_any_user()
-    {
+    function test_it_fetches_a_feed_for_any_user() {
+
         $this->signIn();
 
         create('App\Thread', ['user_id' => auth()->id()], 2);
