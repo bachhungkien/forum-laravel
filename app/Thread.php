@@ -2,9 +2,13 @@
 
 namespace App;
 
+use App\Filters\ThreadFilters;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model {
+
+    use RecordsActivity;
 
     protected $guarded = [];
 
@@ -49,7 +53,7 @@ class Thread extends Model {
         $this->replies()->create($reply);
     }
 
-    public function scopeFilter($query, $filters) {
+    public function scopeFilter($query, ThreadFilters $filters) {
 
         return $filters->apply($query);
     }
