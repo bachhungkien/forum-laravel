@@ -19,7 +19,7 @@
         <div class="panel-body">
             <div v-if="editing">
                 <div class="form-group">
-                    <textarea class="form-control" v-model="body"></textarea>
+                    <textarea class="form-control" v-model="body" rows="8"></textarea>
                 </div>
 
                 <button class="btn btn-xs btn-primary" @click="update">Update</button>
