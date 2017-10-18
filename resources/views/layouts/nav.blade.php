@@ -37,6 +37,8 @@
                         @endif
 
                         <li><a href="{{ url('/threads?popular=1') }}">Popular Threads</a></li>
+
+                        <li><a href="{{ url('/threads?unanswered=1') }}">Unanswered Threads</a></li>
                     </ul>
                 </li>
 

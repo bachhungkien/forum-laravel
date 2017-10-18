@@ -11,9 +11,11 @@
                           v-model="body"></textarea>
             </div>
 
-            <button type="submit"
+            <div class="form-group">
+                <button type="submit"
                     class="btn btn-default"
                     @click="addReply">Post</button>
+            </div>
         </div>
 
         <p class="text-center" v-else>
@@ -25,7 +27,6 @@
 
 <script>
     export default {
-        props: ['endpoint'],
 
         data() {
             return {
@@ -41,7 +42,7 @@
 
         methods: {
             addReply() {
-                axios.post(this.endpoint, { body: this.body })
+                axios.post(location.pathname + '/replies', { body: this.body })
                     .then(({data}) => {
                         this.body = '';
 
