@@ -59,7 +59,7 @@ class CreateThreadsTest extends TestCase {
             ->assertSessionHasErrors('channel_id');
     }
 
-    function test_unauthorized_users_may_not_delete_threads() {
+    public function test_unauthorized_users_may_not_delete_threads() {
 
         $this->expectException('Illuminate\Auth\AuthenticationException');
 
@@ -71,7 +71,7 @@ class CreateThreadsTest extends TestCase {
         $this->delete($thread->path())->assertStatus(403);
     }
 
-    function test_authorized_users_can_delete_threads() {
+    public function test_authorized_users_can_delete_threads() {
 
         $this->signIn();
 
